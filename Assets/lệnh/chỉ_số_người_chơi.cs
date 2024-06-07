@@ -8,7 +8,25 @@ public class chỉ_số_người_chơi : MonoBehaviour
     public static int tinh_thể;//có thể truy cập thông qua tên lớp mà không cần tạo ra các thể hiện cụ thể của lớp.
     public int tinh_thể_khởi_đầu = 200;
 
-    public static int mạng;
+    private static int _mạng;
+    // ENCAPSULATION
+    public static int mạng
+    {
+        get { return _mạng; }
+        set
+        {
+            // Đảm bảo giá trị của mạng không bao giờ dưới 0
+            if (value < 0)
+            {
+                _mạng = 0;
+            }
+            else
+            {
+                _mạng = value;
+            }
+        }
+    }
+
     public int mạng_khởi_đầu = 10;
     public static int lượt;
     public static int số_trụ_súng;

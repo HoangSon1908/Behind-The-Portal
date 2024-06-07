@@ -107,6 +107,7 @@ public class sinh_quái : MonoBehaviour
         }
     }
 
+    //ABSTRACTION
     public void tạo_quái(GameObject kẻ_địch)
     {
         Instantiate(kẻ_địch, điểm_tạo_quái.position, điểm_tạo_quái.rotation);
