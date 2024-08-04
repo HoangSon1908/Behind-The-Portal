@@ -3,16 +3,17 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Lệnh xử lý cho hiệu ứng chuyển cảnh (Bên trong đối tượng loading)
 public class Loading : MonoBehaviour
 {
     public Image load;
-    public AnimationCurve curve;
+    public AnimationCurve curve;//tạo hiệu ứng nhanh dần
     public static bool đã_tải;
 
     private void Start()
     {
         đã_tải = false;
-        StartCoroutine(đăng_vào());
+        StartCoroutine(đăng_vào());//tạo hiệu ứng load vào ở mỗi cảnh
     }
 
     public void tải(string scene)
@@ -21,7 +22,6 @@ public class Loading : MonoBehaviour
         {
             return;
         }
-        nhạc_nền.instance.Đăng_tải();
         StartCoroutine(đăng_tải(scene));
     }
     
@@ -33,28 +33,23 @@ public class Loading : MonoBehaviour
         {
             t-=Time.deltaTime;
             float a =curve.Evaluate(t);
-            load.color = new Color(0f, 191f, 255f,a);
+            load.color = new Color(0f, 191f, 255f,a);//tạo hiệu ứng nhạt dần
             yield return 0;
         }
     }
 
     public IEnumerator đăng_tải(string scene)
     {
-        nhạc_nền.instance.Đăng_tải();
-        if (!nhạc_nền.instance.Nhạc_nền.isPlaying)
-        {
-            nhạc_nền.instance.phát_lại();
-        }
         float t = 0f;
 
         while (t <1f)
         {
             t += Time.deltaTime;
             float a = curve.Evaluate(t);
-            load.color = new Color(0f, 191f, 255f, a);
+            load.color = new Color(0f, 191f, 255f, a);//tạo hiệu ứng đậm dần
             yield return 0;
         }
-        SceneManager.LoadScene(scene);
+        SceneManager.LoadScene(scene);//xong hiệu ứng thì chuyển cảnh
         đã_tải = false;
     }
 }

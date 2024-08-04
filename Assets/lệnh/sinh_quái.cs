@@ -1,115 +1,130 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
+using System.Collections.Generic;
 
+//Lệnh này để xử lý việc gọi kẻ địch (Trong SummonEnemy)
 public class sinh_quái : MonoBehaviour
 {
-    public static int số_lượng_địch = 0;
-    
-    public Transform điểm_tạo_quái;
+    public int số_lượng_địch;//hàm lưu số kẻ địch hiện tại
+    public static sinh_quái instance;
 
-    private Wave wave;
+    private Wave wave;//Giá trị wave hiện tại
 
-    public Wave[] waves;
+    public Wave[] waves;//Tạo ra danh sách wave để chỉnh sửa ở Inspector
 
-    private int đợt = 0;
+    public Text Waves;//hiển thị cho người chơi wave hiện tại
 
-    public Text Waves;
+    public float chờ = 10f;//thời gian chờ giữa mỗi wave
+    private float đếm_ngược = 2f;//đếm ngược thời gian chờ mỗi wave
 
-    public GameObject final_boss;
+    private int currentWave;//số wave hiện tại
 
-    public static bool Boss_cuối;
-
-    public float chờ = 10f;
-    private float đếm_ngược = 2f;
-
-    public Quản_lý quản_lý;
+    public List<Transform> spawnPoints = new();//khai báo vị trí gọi quái trên mặt đất
+    public List<Transform> flySpawnPoints = new();//khai báo vị trí gọi quái trên không
 
     private void Start()
     {
+        instance = this;
         số_lượng_địch = 0;
-        Boss_cuối = false;
     }
     private void Update()
     {
-        if (số_lượng_địch > 0)
+        if (số_lượng_địch > 0)//bao giờ không còn kẻ địch thì tiếp tục
         {
-            return;
-        }
-        if (Quản_lý.kết_thúc == true)
-        {
-            this.enabled = false;
             return;
         }
 
-        if (đếm_ngược<=0f)
+        if (đếm_ngược<=0f)//nếu đếm ngược hết thì bắt đầu wave và đặt lại thời gian
         {
-            StartCoroutine(bắt_đầu());//gọi hàm đếm ngược
+            StartCoroutine(bắt_đầu());
             
             đếm_ngược = chờ;
             return;
-        }
-        if (đợt == waves.Length && số_lượng_địch == 0)
-        {
-            StartCoroutine(boss_cuối());
-            this.enabled = false;
         }
 
         đếm_ngược -=Time.deltaTime;
     }
 
-    IEnumerator boss_cuối()
-    {
-        Waves.text = "FINAL BOSS"; 
-        Waves.color = Color.red;
-        yield return new WaitForSeconds(2);
-        nhạc_nền.instance.nhạc_boss();
-        yield return new WaitForSeconds(8);
-        tạo_quái(final_boss);
-        số_lượng_địch++;
-        Boss_cuối = true;// Đánh dấu rằng đã thực hiện một lần
-    }
-
     IEnumerator bắt_đầu()
     {
-        chỉ_số_người_chơi.lượt++;
+        wave = waves[currentWave];//đặt giá trị cho wave hiện tại
 
-        wave = waves[đợt];
-
-        số_lượng_địch = wave.số_lượng1+wave.số_lượng2;
-        if (wave.kẻ_địch1 != null)
+        số_lượng_địch = wave.số_lượng+wave.số_lượng_2+wave.số_lượng_bay;//đếm số kẻ địch trên sân
+        //kiểm tra nếu GameObject kẻ địch tồn tại thì gọi ra
+        if (wave.kẻ_địch != null)
         {
-            StartCoroutine(đợt1());
+            StartCoroutine(Gọi_quái());
         }
-        if (wave.kẻ_địch2 != null)
+        if (wave.kẻ_địch_bay != null)
         {
-            StartCoroutine(đợt2());
+            StartCoroutine(Gọi_quái_bay());
         }
-        đợt++;
-        Waves.text = "Wave : " + đợt.ToString() + "/10";
+        if (wave.kẻ_địch_2 != null)
+        {
+            StartCoroutine(Gọi_quái_2());
+        }
+        currentWave++;
+        Waves.text = "Wave : " + currentWave.ToString() + "/10";
         yield return 0;
     }
-    IEnumerator đợt1()
+    //tập lệnh xử lý việc gọi quái lặp lại sau mỗi 2s
+    IEnumerator Gọi_quái()
     {
-        for (int i = 0; i < wave.số_lượng1; i++)
+        for (int i = 0; i < wave.số_lượng; i++)
         {
-            tạo_quái(wave.kẻ_địch1);
-            yield return new WaitForSeconds(wave.rate1);//thời gian chờ
+            tạo_quái();
+            yield return new WaitForSeconds(2f);
         }
     }
-    IEnumerator đợt2()
+    IEnumerator Gọi_quái_2()
     {
-        yield return new WaitForSeconds(wave.thời_gian_trước_đợt2);
-        for (int i = 0; i < wave.số_lượng2; i++)
+        for (int i = 0; i < wave.số_lượng_2; i++)
         {
-            tạo_quái(wave.kẻ_địch2);
-            yield return new WaitForSeconds(wave.rate2);
+            tạo_quái_2();
+            yield return new WaitForSeconds(3f);
         }
+    }
+    IEnumerator Gọi_quái_bay()
+    {
+        for (int i = 0; i < wave.số_lượng_bay; i++)
+        {
+            tạo_quái_bay();
+            yield return new WaitForSeconds(2f);
+        }
+    }
+    
+    //Tập lệnh gọi quái ở ngẫu nhiên các SpawPoint 
+    public void tạo_quái()
+    {
+        int randomIndex = UnityEngine.Random.Range(0, spawnPoints.Count);
+
+        Vector3 spawnPosition = spawnPoints[randomIndex].position;
+        Quaternion spawnRotation = spawnPoints[randomIndex].rotation;
+
+        Instantiate(wave.kẻ_địch, spawnPosition, spawnRotation);
+    }
+    public void tạo_quái_2()
+    {
+        int randomIndex = UnityEngine.Random.Range(0, spawnPoints.Count);
+
+        Vector3 spawnPosition = spawnPoints[randomIndex].position;
+        Quaternion spawnRotation = spawnPoints[randomIndex].rotation;
+
+        Instantiate(wave.kẻ_địch_2, spawnPosition, spawnRotation);
+    }
+    public void tạo_quái_bay()
+    {
+        int randomIndex = UnityEngine.Random.Range(0, flySpawnPoints.Count);
+
+        Vector3 spawnPosition = flySpawnPoints[randomIndex].position;
+        Quaternion spawnRotation = flySpawnPoints[randomIndex].rotation;
+
+        Instantiate(wave.kẻ_địch_bay, spawnPosition, spawnRotation);
     }
 
-    //ABSTRACTION
-    public void tạo_quái(GameObject kẻ_địch)
+    public int Wave()
     {
-        Instantiate(kẻ_địch, điểm_tạo_quái.position, điểm_tạo_quái.rotation);
+        return currentWave - 1;
     }
 }

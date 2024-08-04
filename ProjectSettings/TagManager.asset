@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - "k\u1EBB_th\xF9"
+  - Enemy
+  - "N\u1EC1n"
   layers:
   - Default
   - TransparentFX
@@ -12,12 +13,12 @@ TagManager:
   - 
   - Water
   - UI
+  - Player
   - "m\xF4i tr\u01B0\u1EDDng"
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Post processing
+  - Enemy
+  - ammo
+  - Flying object
   - 
   - 
   - 

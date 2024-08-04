@@ -1,16 +1,17 @@
 ﻿using System.Collections;
-using System.Security.Cryptography;
 using UnityEngine;
 
+//Lệnh cho đồ họa menu (Trong đối tượng UI cảnh Menu)
 public class menu : MonoBehaviour
 {
-    public CanvasGroup canvasGroup;
+    public CanvasGroup canvasGroup;//độ đậm của Hướng_dẫn
     public GameObject Hướng_dẫn;
+    public GameObject Continue;
     public Loading loading;
 
     public void bắt_đầu()
     {
-        loading.tải("cảnh game");
+        loading.tải("gameplay");//gọi lệnh hiệu ứng loading
         Loading.đã_tải = true;
     }
 
@@ -25,22 +26,10 @@ public class menu : MonoBehaviour
         {
             return;
         }
-        nhạc_nền.instance.Đăng_mở();
         StartCoroutine(đậm_dần());
     }
 
-    public void thoát()
-    {
-        if (Loading.đã_tải)
-        {
-            return;
-        }
-        nhạc_nền.instance.Đăng_mở();
-        StartCoroutine(mờ_dần());//không cần chờ đợi hoàn thành trước khi thực hiện các tác vụ khác
-        Loading.đã_tải = true;
-    }
-
-    private IEnumerator đậm_dần()
+    private IEnumerator đậm_dần()//tạo hiệu ứng mở Hướng_dẫn
     {
         Hướng_dẫn.SetActive(true);
         float t = 0f;
@@ -51,23 +40,7 @@ public class menu : MonoBehaviour
             canvasGroup.alpha = t;
             yield return null;
         }
-
-        // Ẩn đối tượng hướng dẫn khi đã làm giảm dần Alpha xong
-    }
-
-    private IEnumerator mờ_dần()
-    {
-        float t = 1f;
-
-        while (t > 0f)
-        {
-            t -= Time.deltaTime*2;
-            canvasGroup.alpha = t;
-            yield return null;
-        }
-
-        // Ẩn đối tượng hướng dẫn khi đã làm giảm dần Alpha xong
-        Hướng_dẫn.SetActive(false);
-        Loading.đã_tải = false;
+        yield return new WaitForSeconds(3);
+        Continue.SetActive(true);
     }
 }

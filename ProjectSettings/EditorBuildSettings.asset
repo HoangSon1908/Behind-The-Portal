@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: "Assets/c\u1EA3nh/menu.unity"
     guid: 19e7c4261dd60b94e8052cc8d3514e76
   - enabled: 1
-    path: "Assets/c\u1EA3nh/c\u1EA3nh game.unity"
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: "Assets/c\u1EA3nh/Gameplay.unity"
+    guid: 43ca5834bddbdfc43bb0353d2d03db1d
   m_configObjects: {}
