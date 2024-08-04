@@ -128,15 +128,6 @@ MonoBehaviour:
   "ti\u1EC1n": 500
   "hi\u1EC7u_\u1EE9ng_h\u1EB9o": {fileID: 3153472991145048103, guid: 3407e378c048bb5438424b28c7740b48, type: 3}
   "thanh_m\xE1u": {fileID: 577441190758476870}
-  Xoay: {fileID: 0}
-  "\u0111\u1EA1i_t\u01B0\u1EDBng": 0
-  "h\u1ED3i_sinh": 0
-  "\xE1o_gi\xE1p": {fileID: 0}
-  "n\u1ED5_l\u1EDBn": {fileID: 0}
-  "V\u01B0\u01A1ng_gi\u1EA3": 0
-  finality: {fileID: 0}
-  tinh_anh: {fileID: 0}
-  "\u0111\u1EA5u_kh\xED": {fileID: 0}
   "k\u1EBB_\u0111\u1ECBch": {fileID: 925622666710927065, guid: 902f7dfd92a7d214ab03526409ec7c05, type: 3}
 --- !u!1 &4008668529356570141
 GameObject:
@@ -207,16 +198,16 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 26
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 6
+    m_Alignment: 7
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ch\xFAa t\u1EC3"
+  m_Text: Elite
 --- !u!1 &6131877529155196935
 GameObject:
   m_ObjectHideFlags: 0

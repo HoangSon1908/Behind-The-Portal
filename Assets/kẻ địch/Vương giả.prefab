@@ -172,16 +172,16 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 24
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 6
+    m_Alignment: 7
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "V\u01B0\u01A1ng Gi\u1EA3"
+  m_Text: Final Boss
 --- !u!1 &4899634538248004210
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,11 +462,6 @@ MonoBehaviour:
   "ti\u1EC1n": 0
   "hi\u1EC7u_\u1EE9ng_h\u1EB9o": {fileID: 3153472991145048103, guid: 3407e378c048bb5438424b28c7740b48, type: 3}
   "thanh_m\xE1u": {fileID: 6275878081311349069}
-  Xoay: {fileID: 0}
-  "\u0111\u1EA1i_t\u01B0\u1EDBng": 0
-  "h\u1ED3i_sinh": 0
-  "\xE1o_gi\xE1p": {fileID: 0}
-  "n\u1ED5_l\u1EDBn": {fileID: 0}
   tinh_anh: {fileID: 925622666710927065, guid: e10a580ba22a45f4ea80254c1ad2ee07, type: 3}
   "\u0111\u1EA5u_kh\xED": {fileID: 8615247588089194081}
 --- !u!1001 &1615995081852754912

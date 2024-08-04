@@ -86,7 +86,7 @@ public class sinh_quái : MonoBehaviour
             StartCoroutine(đợt2());
         }
         đợt++;
-        Waves.text = "Lượt : " + đợt.ToString() + "/10";
+        Waves.text = "Wave : " + đợt.ToString() + "/10";
         yield return 0;
     }
     IEnumerator đợt1()

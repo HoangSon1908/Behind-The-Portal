@@ -15,6 +15,14 @@ public class Vương_giả : Kẻ_địch
         máu = máu_khởi_đầu;
     }
 
+    protected override void hẹo()
+    {
+        isDead = true;
+        sinh_quái.số_lượng_địch--;
+        chỉ_số_người_chơi.tinh_thể += tiền;
+        Destroy(gameObject);
+    }
+
     // POLYMORPHISM
     protected override void tiếp_tục()
     {

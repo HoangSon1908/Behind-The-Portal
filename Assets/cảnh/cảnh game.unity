@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.38515937, g: 0.4724939, b: 0.61858577, a: 1}
+  m_IndirectSpecularColor: {r: 0.38443884, g: 0.47177988, b: 0.6176203, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1488,7 +1488,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "L\u01B0\u1EE3t : 00/10"
+  m_Text: 'Wave : 00/10'
 --- !u!222 &56442483
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2860,7 +2860,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "T\u1EA1m d\u1EEBng"
+  m_Text: Pause
 --- !u!222 &173602134
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6908,7 +6908,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Th\u1EED L\u1EA1i"
+  m_Text: Retry :D
 --- !u!222 &438619318
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7873,7 +7873,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000054431, y: -107}
+  m_AnchoredPosition: {x: 45, y: -107}
   m_SizeDelta: {x: 594.72, y: 58.3367}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &517680725
@@ -7909,7 +7909,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "        S\u1ED1 th\xE1p s\xFAng:"
+  m_Text: 'Number of turret : '
 --- !u!222 &517680726
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8130,7 +8130,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Th\u1EED L\u1EA1i"
+  m_Text: Retry :D
 --- !u!222 &527328708
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11933,8 +11933,8 @@ RectTransform:
   m_Children:
   - {fileID: 517680724}
   - {fileID: 663640581}
-  - {fileID: 1295262405}
   - {fileID: 784891981}
+  - {fileID: 1295262405}
   - {fileID: 938111626}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14075,7 +14075,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -202.76}
-  m_SizeDelta: {x: 822.2744, y: 375.34}
+  m_SizeDelta: {x: 720, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &982431528
 CanvasGroup:
@@ -14126,7 +14126,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 0
@@ -14137,8 +14137,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "You Win :)\nC\u1EA3m \u01A1n v\xEC \u0111\xE3 ch\u01A1i t\u1EF1a game
-    c\u1EE7a m\xECnh!"
+  m_Text: 'You Win :)
+
+    Thank you for playing my game !'
 --- !u!222 &982431531
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15478,7 +15479,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Th\u1EED L\u1EA1i"
+  m_Text: Retry :D
 --- !u!222 &1065598953
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16817,7 +16818,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "10 M\u1EA1ng"
+  m_Text: 10 life
 --- !u!222 &1145093856
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17591,7 +17592,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.0002079, y: 0}
-  m_SizeDelta: {x: 196.22, y: 100}
+  m_SizeDelta: {x: 220, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1237788074
 MonoBehaviour:
@@ -17641,7 +17642,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ti\u1EBFp t\u1EE5c"
+  m_Text: Continue
 --- !u!222 &1237788076
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22824,7 +22825,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "L\u01AF\u1EE2T"
+  m_Text: Waves
 --- !u!222 &1588290249
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25928,7 +25929,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 189.32933, y: 0}
+  m_AnchoredPosition: {x: 170, y: 0}
   m_SizeDelta: {x: 216.0613, y: 58.3367}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1784816230

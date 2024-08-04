@@ -45,7 +45,7 @@ public class chỉ_số_người_chơi : MonoBehaviour
 
     private void Update()
     {
-        Mạng.text = chỉ_số_người_chơi.mạng + " Mạng";
+        Mạng.text = chỉ_số_người_chơi.mạng + " Life";
         tiền.text ="$" + tinh_thể;
         trụ_súng.text = số_trụ_súng + "/10";
     }
