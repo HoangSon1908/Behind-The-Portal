@@ -7,9 +7,9 @@ public class Enemy : MonoBehaviour
 {
     public NavMeshAgent agent; // Component điều khiển AI di chuyển trên NavMesh
 
-    public GameObject healObject; // Đối tượng hồi máu mà kẻ địch có thể tạo ra khi chết
+    public Transform firePoint;
 
-    public Transform fireSpot; // Vị trí mà từ đó kẻ địch bắn đạn
+    public GameObject healObject; // Đối tượng hồi máu mà kẻ địch có thể tạo ra khi chết
 
     public GameObject quái_con; // Prefab của quái con mà kẻ địch có thể tạo ra
 
@@ -71,11 +71,7 @@ public class Enemy : MonoBehaviour
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange)
         {
-            AttackPlayer();
-            if (isBoss)//giúp boss vừa đi vừa bắn ;)
-            {
-                Patroling();
-            }
+                AttackPlayer();
         }
     }
 
@@ -128,19 +124,18 @@ public class Enemy : MonoBehaviour
 
     private void AttackPlayer()
     {
-        //khiến kẻ địch đứng im
-        agent.SetDestination(transform.position);
-        //nếu không bay thì nhìn người chơi và lấy giá trị bắn
-        if (!isFly)
+        if (isBoss)//giúp boss vừa đi vừa bắn ;)
         {
-            transform.LookAt(player);
-            direction = transform.forward;
+            Patroling();
         }
         else
         {
-            transform.LookAt(player, Vector3.up);
-            direction = player.position - transform.position;
+            //khiến kẻ địch đứng im
+            agent.SetDestination(transform.position);
         }
+
+        transform.LookAt(player, Vector3.up);
+        direction = player.position - firePoint.position;
 
         if (!alreadyAttacked)//nếu chưa bắn thì gọi lệnh bắn
         {
@@ -151,12 +146,12 @@ public class Enemy : MonoBehaviour
     private IEnumerator HandleAttack()
     {
 
-        var bullet = Instantiate(projectile, fireSpot.position, fireSpot.rotation);//tạo viên đạn ở fireSpot
+        var bullet = Instantiate(projectile, firePoint.position,firePoint.rotation);//tạo viên đạn ở fireSpot
 
         //RayCast
-        if (Physics.Raycast(transform.position, direction, out ray, 100, whatIsPlayer))//kiểm tra va chạm raycast từ hướng kẻ địch đến người chơi
+        if (Physics.Raycast(firePoint.position, direction, out ray, 100, whatIsPlayer))//kiểm tra va chạm raycast từ hướng kẻ địch đến người chơi
         {
-            Vector3 directionbullet = (ray.point - transform.position).normalized;//định hướng viên đạn dựa theo giá trị nhận được
+            Vector3 directionbullet = (ray.point - firePoint.position).normalized;//định hướng viên đạn dựa theo giá trị nhận được
             bullet.GetComponent<Rigidbody>().velocity = directionbullet * 60;//đẩy viên đạn đi
         }
 
@@ -218,7 +213,7 @@ public class Enemy : MonoBehaviour
             // Process each Collider found.
             if (hitColliders[i].CompareTag("Player"))
             {
-                Player.instance.TakeDamage(20);//trừ người chơi 20 máu nếu va chạm
+                Player.instance.TakeDamage(20, transform.position);//trừ người chơi 20 máu nếu va chạm
             }
         }
     }

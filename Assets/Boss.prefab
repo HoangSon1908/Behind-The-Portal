@@ -470,8 +470,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 3663604171856628342}
+  firePoint: {fileID: 2884671819175519823}
   healObject: {fileID: 0}
-  fireSpot: {fileID: 2884671819175519823}
   "qu\xE1i_con": {fileID: 0}
   player: {fileID: 0}
   effect: {fileID: 0}

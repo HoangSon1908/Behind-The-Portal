@@ -478,8 +478,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 5640207876518425539}
+  firePoint: {fileID: 4376578244952724045}
   healObject: {fileID: 1000010728489230, guid: 8b40cffea67202d4bbf662b25de4c94a, type: 3}
-  fireSpot: {fileID: 4376578244952724045}
   "qu\xE1i_con": {fileID: 0}
   player: {fileID: 0}
   effect: {fileID: 1000011128802252, guid: 4b5a95a76d14a914cb13324ff26ba73a, type: 3}
@@ -502,7 +502,7 @@ MonoBehaviour:
   timeBetweenAttacks: 1
   projectile: {fileID: 4987689607774592109, guid: b480c06090047fb478f99157f62e4063, type: 3}
   sightRange: 60
-  attackRange: 20
+  attackRange: 15
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!1 &3997159692579024754

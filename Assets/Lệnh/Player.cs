@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     public Loading loading;
 
     public bool isGodmode;
+
+    public DamageIndicator indicator;
     void Start()
     {
         isGodmode = false;
@@ -64,8 +66,12 @@ public class Player : MonoBehaviour
         isGodmode = false;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage,Vector3 enemyLocation)
     {
+        indicator.DamageLocation = enemyLocation;
+        GameObject gameObject = Instantiate(indicator.gameObject, indicator.transform.position, indicator.transform.rotation,indicator.transform.parent);
+        gameObject.SetActive(true);
+
         if (currentHealth - damage > 0)
         currentHealth -= damage;
         else
